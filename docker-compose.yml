@@ -34,6 +34,15 @@ services:
     volumes:
       - ./app/migrations:/app/migrations
 
-# Define named volumes
+  test:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    container_name: app_test  
+    command: ["pytest", "test_app.py"]  
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+
 volumes:
   db_data:
