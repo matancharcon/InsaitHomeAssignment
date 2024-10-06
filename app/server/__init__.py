@@ -7,11 +7,12 @@ load_dotenv()
 
 db = SQLAlchemy()
 
-
-
-def create_app():
+def create_app(testing=False):
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL")
+    if testing:
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+        
     db.init_app(app)
 
     from .routes import main
