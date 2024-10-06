@@ -1,0 +1,6 @@
+Flask>=2.0 
+Flask-SQLAlchemy
+psycopg2-binary
+python-dotenv
+openai
+alembic
